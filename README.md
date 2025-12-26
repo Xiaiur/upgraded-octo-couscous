@@ -1,186 +1,207 @@
-<div align="center"><h1 align="center">
- Отчёт по дообучению LLM для разбора стратегических игр
-</h1>
-</div>
-
-## Введение
-
-### Цель работы
-
-Целью данной работы является дообучение большой языковой модели (LLM) для анализа и разбора стратегических игр.
-
-### Постановка задачи
-
-Необходимо адаптировать базовую LLM под предметную область стратегических игр с минимальными вычислительными затратами за счёт применения LoRA-подхода к дообучению.
-
-В качестве стратегической игры была выбрана Heroes of Might and Magic IV.
-
+---
+base_model: Qwen/Qwen2.5-1.5B
+library_name: peft
+pipeline_tag: text-generation
+tags:
+- base_model:adapter:Qwen/Qwen2.5-1.5B
+- lora
+- transformers
 ---
 
-## 1 Параметры модели и конфигурация LoRA
+# Model Card for Model ID
 
-### 1.1 Базовая модель
+<!-- Provide a quick summary of what the model is/does. -->
 
-- Название модели: `Qwen/Qwen2.5-1.5B`
-- Архитектура: `Transformer`
-- Количество параметров: `1.5B`
-- Количество слоёв: `28`
-- Контекстное окно: `32к`
 
-### 1.2 Конфигурация LoRA
 
-- Target-модули: 'q_proj', 'k_proj', 'v_proj', 'o_proj', 'gate_proj', 'up_proj', 'down_proj'
-- Rank (r): `16`
-- Alpha: `64`
-- Dropout: `0.2`
-- Bias: `Base Model + LoRA`
-- Используемая библиотека: `PEFT`
+## Model Details
 
----
+### Model Description
 
-## 2 Данные для дообучения
+<!-- Provide a longer summary of what this model is. -->
 
-### 2.1 Источник данных
 
-РУ вики по игре Heroes of Might and Magic IV:
 
-> https://mightandmagic.fandom.com/ru/wiki/Heroes_of_Might_and_Magic_IV
+- **Developed by:** [More Information Needed]
+- **Funded by [optional]:** [More Information Needed]
+- **Shared by [optional]:** [More Information Needed]
+- **Model type:** [More Information Needed]
+- **Language(s) (NLP):** [More Information Needed]
+- **License:** [More Information Needed]
+- **Finetuned from model [optional]:** [More Information Needed]
 
-### 2.2 Формат данных
+### Model Sources [optional]
 
-Обычный текст с форума(60600 слов):
+<!-- Provide the basic links for the model. -->
 
-> Heroes of Might and Magic IV (рус. Герои Меча и Магии 4) — компьютерная игра в жанре пошаговой стратегии с элементами RPG, четвёртая часть серии. Как и предшествующая часть серии – Heroes of Might and Magic III – разработана компанией New World Computing и выпущена The 3DO Company весной 2002 года. ...
+- **Repository:** [More Information Needed]
+- **Paper [optional]:** [More Information Needed]
+- **Demo [optional]:** [More Information Needed]
 
-## 3 Обучение
+## Uses
 
-`python train_model.py --model_name Qwen/Qwen2.5-1.5B --data_path data.jsonl --output_dir ./my-lora-model --use_lora`
+<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
 
-| Параметры обучения | Значение |
-| --- | --- | 
-| Кол-во эпох | 3 | 
-| Скорость обучения | 2e-4 |
-| Размер батча | 4 |
+### Direct Use
 
-![1766686022813](images/Отчет/1766686022813.png)
+<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
 
-## 4 Результаты и сравнение
+[More Information Needed]
 
-Запуск скрипта осуществляется через команду:
+### Downstream Use [optional]
 
-`python chatting.py --model_name Qwen/Qwen2.5-1.5B --model_dir my-lora-model --test_seed 4563799842`
+<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
 
-| Параметры генерации | Значение|
-| --- | --- | 
-| Кол-во токенов | 200 | 
-| Температура | 0.5 |
-| top_p | 0.3 |
-| top_k | 5 |
+[More Information Needed]
 
-### 4.1 Prompt 1
+### Out-of-Scope Use
 
-Prompt:
+<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
 
-> Расскажи про фракции в Heroes of Might and Magic IV.
+[More Information Needed]
 
-| Модель                       | Результат                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Базовая модель        | Расскажи про фракции в Heroes of Might and Magic IV. Фракции в Heroes of Might and Magic IV (HOMMIV) - это группы игроков, объединяющиеся для выполнения определенных целей или для достижения определенных результатов. В игре HOMMIV фракции могут быть разными, в зависимости от того, что они хотят добиться.1. **Фракция "Великие Древние"\*\*: Это фракция, которая стремится к сохранению древних традиций и культурных традиций. Они хотят защитить свои королевства от внешних угроз и сохранить свою историю.2. *\*Фракция "Светлые Древние"\*\*: Это фракция, которая стремится к развитию и прогрессу. Они хотят использовать свои силы для достижения новых побед и достижений. |
-| Базовая модель + LoRA | Расскажи про фракции в Heroes of Might and Magic IV. Состоит из 4-х фракций – Обители, Пристанища, Некрополиса и Академии. В каждой из них присутствуют все типы героев – юниты, существа, герои-некроманты и герои-маги. Все фракции имеют одинаковые характеристики по базовым навыкам (Лидерство, Магия Жизни, Магия Смерти, Дипломатия, Сопротивление магии), а также по навыку Разведки. Различаются лишь стоимость героев и их максимальный запас маны.                                                                                                                                                                                                                                                                                                                                                                                            |
+## Bias, Risks, and Limitations
 
-### 4.2 Prompt 2
+<!-- This section is meant to convey both technical and sociotechnical limitations. -->
 
-Prompt:
+[More Information Needed]
 
-> Расскажи про юнит Варвар.
+### Recommendations
 
-| Модель                       | Результат                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Базовая модель        | Расскажи про юнит Варвар. Варвар - это юнит, который является одним из самых сильных в игре. Он имеет высокую атакующую и защитную силу, а также может использовать различные магические атаки. Варвар также может использовать различные способности, такие как "Варварский удар", "Варварский шлем" и "Варварский кулак". Эти способности позволяют ему увеличить свою атакующую и защитную силу, а также улучшить его способность к магии. Варвар также может использовать различные предметы, такие как "Варварский шлем" и "Варварский кулак", которые улучшают его способность к магии и увеличивают его атакующую и защитную силу. |
-| Базовая модель + LoRA | Расскажи про юнит Варвар. Расположение в бою/Варвар – юнит 1-го уровня фракции Крепость в игре Герои Меча и Магии IV. Нанимаются в Логове дракона.Варвары – самые быстрые юниты в игре, а их скорость и дальность передвижения в бою – самая высокая по отношению к остальным юнитам своего уровня. Они могут передвигаться в бою без потерь в численности, даже при наличии штрафа на препятствия. Способность "Первый удар" позволяет им наносить удар первыми, что позволяет им наносить удар по противнику, который ещё не успел ответить на предыдущий удар вражеской армии.                                                                                                          |
+<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
 
-### 4.3 Сравнение
+Users (both direct and downstream) should be made aware of the risks, biases and limitations of the model. More information needed for further recommendations.
 
-Запрос: Расскажи про фракции в Heroes of Might and Magic IV.
+## How to Get Started with the Model
 
-| Критерий                                    | До обучения                                          | После обучения                                                                     |
-| --------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Фактическая корректность     | Низкая: вымышленные фракции            | Средняя–высокая: перечислены реальные фракции игры |
-| Соответствие лору игры          | Отсутствует                                         | Частичное, с опорой на игровые механики                        |
-| Структурированность ответа | Формальная, без игровой специфики | Логичная, с перечислением и пояснениями                       |
+Use the code below to get started with the model.
 
-Запрос: Расскажи про юнит Варвар.
+[More Information Needed]
 
-| Критерий                                            | До обучения                                                                                           | После обучения                                                                  |
-| ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| Фактическая корректность             | Низкая: обобщённый,фантазийный юнит, магические способности | Высокая: указаны уровень, фракция, особенности боя |
-| Детализация                                      | Поверхностная                                                                                      | Детализированная (скорость, способности, тактика)  |
-| Использование терминологии HOMM IV | Практически отсутствует                                                                   | Корректная игровая терминология                                 |
-| Пользовательская полезность       | Низкая                                                                                                    | Высокая (подходит для анализа и обучения)                  |
+## Training Details
 
-До дообучения модель демонстрировала галлюцинации, вымышленные сущности и отсутствие привязки к лору игры. После применения LoRA дообучения ответы стали существенно более корректными с точки зрения фактов, игровой терминологии и практической полезности для анализа стратегической игры. Кроме того, наблюдается рост глубины описаний и снижение уровня абстрактных обобщений.
+### Training Data
 
-## 5 Код обучения
-### 5.1 Загрузка базовой модели
-```
-model = AutoModelForCausalLM.from_pretrained( 
-        args.model_name, 
-        device_map="auto", 
-        torch_dtype=torch.float16 
-        )
-```
-### 5.2 Настройка LoRA-конфигурации
-```
-target_modules = get_default_lora_targets(args.model_name)
-print(f"Используем target_modules для LoRA: {target_modules}")
-lora_config = LoraConfig(task_type=TaskType.CAUSAL_LM,
-                         inference_mode=False,r=args.lora_r,
-                         lora_alpha=args.lora_alpha,
-                         lora_dropout=args.lora_dropout,
-                         target_modules=target_modules,)
-model = get_peft_model(model, lora_config) model.print_trainable_parameters()
-```
-### 5.3 Чтение датасета
-```
-text = read_markdown(args.data_path)
-ds = prepare_markdown_dataset(text=text,
-                              tokenizer=tokenizer,
-                              max_length=args.max_length )
-data_collator = DataCollatorForCausalLMWithLabels(tokenizer=tokenizer)
-```
-### 5.4 Указание параметров обучения
-```
-training_args = TrainingArguments(
-              output_dir=args.output_dir,
-              per_device_train_batch_size=args.per_device_train_batch_size,
-              num_train_epochs=args.num_train_epochs,
-              learning_rate=args.learning_rate,
-              logging_steps=10,
-              save_strategy="no",
-              save_total_limit=1,
-              fp16=True,
-              remove_unused_columns=False,
-              push_to_hub=False,
-              report_to=[],
-)
-```
-### 5.5 Инициализация Trainer
-```
-trainer = Trainer(model=model,
-                  args=training_args,
-                  train_dataset=ds,
-                  data_collator=data_collator,
-)
-```
-### 5.5 Вызов начала обучения и сохранение результата
-```
-print("Начинаем обучение...")
-trainer.train()
-print("Сохраняем результат...")
-os.makedirs(args.output_dir, exist_ok=True)
-```
+<!-- This should link to a Dataset Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
 
-## Вывод
+[More Information Needed]
 
-В ходе работы было выполнено дообучение большой языковой модели для разбора стратегической игры *Heroes of Might and Magic IV* с использованием метода LoRA, что позволило повысить фактическую корректность, соответствие игровому лору и практическую полезность ответов при минимальных вычислительных затратах. После дообучения модель значительно снизила уровень галлюцинаций, стала корректно использовать терминологию и игровые механики, а также формировать более структурированные и детализированные ответы, что подтверждается сравнением результатов до и после обучения.
+### Training Procedure
 
+<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
+
+#### Preprocessing [optional]
+
+[More Information Needed]
+
+
+#### Training Hyperparameters
+
+- **Training regime:** [More Information Needed] <!--fp32, fp16 mixed precision, bf16 mixed precision, bf16 non-mixed precision, fp16 non-mixed precision, fp8 mixed precision -->
+
+#### Speeds, Sizes, Times [optional]
+
+<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
+
+[More Information Needed]
+
+## Evaluation
+
+<!-- This section describes the evaluation protocols and provides the results. -->
+
+### Testing Data, Factors & Metrics
+
+#### Testing Data
+
+<!-- This should link to a Dataset Card if possible. -->
+
+[More Information Needed]
+
+#### Factors
+
+<!-- These are the things the evaluation is disaggregating by, e.g., subpopulations or domains. -->
+
+[More Information Needed]
+
+#### Metrics
+
+<!-- These are the evaluation metrics being used, ideally with a description of why. -->
+
+[More Information Needed]
+
+### Results
+
+[More Information Needed]
+
+#### Summary
+
+
+
+## Model Examination [optional]
+
+<!-- Relevant interpretability work for the model goes here -->
+
+[More Information Needed]
+
+## Environmental Impact
+
+<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly -->
+
+Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
+
+- **Hardware Type:** [More Information Needed]
+- **Hours used:** [More Information Needed]
+- **Cloud Provider:** [More Information Needed]
+- **Compute Region:** [More Information Needed]
+- **Carbon Emitted:** [More Information Needed]
+
+## Technical Specifications [optional]
+
+### Model Architecture and Objective
+
+[More Information Needed]
+
+### Compute Infrastructure
+
+[More Information Needed]
+
+#### Hardware
+
+[More Information Needed]
+
+#### Software
+
+[More Information Needed]
+
+## Citation [optional]
+
+<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
+
+**BibTeX:**
+
+[More Information Needed]
+
+**APA:**
+
+[More Information Needed]
+
+## Glossary [optional]
+
+<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
+
+[More Information Needed]
+
+## More Information [optional]
+
+[More Information Needed]
+
+## Model Card Authors [optional]
+
+[More Information Needed]
+
+## Model Card Contact
+
+[More Information Needed]
+### Framework versions
+
+- PEFT 0.18.0
