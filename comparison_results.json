@@ -1,0 +1,156 @@
+{
+  "timestamp": "2025-12-26T04:45:57.482614",
+  "generation_parameters": {
+    "max_new_tokens": 150,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "top_k": 50,
+    "repetition_penalty": 1.2,
+    "num_return_sequences": 1,
+    "do_sample": true,
+    "pad_token_id": 151643
+  },
+  "total_prompts": 20,
+  "results": [
+    {
+      "prompt": "I climb the wall",
+      "base_response": ". [Climb: [1d20+4] = 7 vs DC 25. Failed. You fall short of target.] Fumble! You drop your tools. Take falling damage? Yes or no? [No, flat-footed fallen.] Continue climbing. Wall height: 30ft. Climb: [1d20+4] = 6 (STR). Success! You scale the wall. Check for hazards inside. No traps found. Contents: rubble, debris. Clear passage. Interior dimensions: 20x8ft. Walls rough-hewn stone. Ceiling sloping up. Stairs down to left. Descend: [1d20+8] = 9 (",
+      "finetuned_response": ". [Climb: [1d20+4]] = 5 vs DC 25. Failed. You fall. Take falling damage. Check HP bar. Update character sheet. Re-roll failure on retry. Confirm: [1d20+4] = 7. Confirmed! You scale the wall. Damage: [1d8+3] = 6 bludgeoning. New bestiary entry required for barbarian type. Add to save DC and monster stats. Request narrative description of feat or ability used. Narrative: Mighty Roar (feat). +9 saves against fear. Roll: 1d6 for damage on breakable items. Fort DC 15 or die. Success: break",
+      "base_time": 12.335185289382935,
+      "finetuned_time": 11.853861808776855
+    },
+    {
+      "prompt": "I rolled 12 on Knowledge",
+      "base_response": "(History) DC 30. Failed. You fail the attempt. There is no success this round. -4 for history rolls due to lack of expertise. Next try: [1d20+9] = 17 vs DC 30. Failed again! You fail the attempt. No HP recovered without healing. Keep trying later. Hint: note failures in previous attempts. Stabilization: [1d20+6] = 8 vs DC 25. Failed! Now at -6 ST. Last chance next day. Yes, doctor? Healer says unlikely but not impossible. Check: [1d20+8] = 9 vs DC 25. Failed! Now at -",
+      "finetuned_response": "check DC 30. Failed. You fail the attempt. There is no penalty for failing a knowledge check. No HP recovery without healing. Next try takes 1 hour. -4 to all checks and saves. Only intelligent creatures can fail this type of check. Yes, take rest day if lost. Add +4 bonus for cleverness. Roll: 1d20+7+-2 (DEX). Minimum 1HP recovered per round unless restore HP checked.",
+      "base_time": 11.904273509979248,
+      "finetuned_time": 7.689708709716797
+    },
+    {
+      "prompt": "I craft to armor",
+      "base_response": "check: [1d20+4] = 6 vs DC 15. Failed! You fail the attempt. Repair required. Craft: [1d20+] = 7-2 (INT), DC 30. Failure. You fail the repair attempt. Fix broken item: [1d8+4] = 9. Success! The object functions again. Time taken: 1 hour. Cost: 20 gp in materials. Make Spellcraft: [1d20+] = 11-2 (INT), DC 15. Failed. You fail the attempted spellcraft. Roll failure: [1d20+2] = 10. Fail! You fail the",
+      "finetuned_response": "check: [1d20+4] = 7 vs DC 15. Failed! You fail the attempt. You break your tool or make a damaging strike. Breaks tool: [1d8+3] = 9. Damage: [1d6+2] = 6 piercing. Tool broken! Repair: [1d10+] = 4-1 (INT), DC 10. Success: [1d8+3] = 9. Failure: [1d8+3] = 12. Twice as damage. Total: 14 piercing. Fort save: [1d20+4] = 22 vs DC 15. Saved!",
+      "base_time": 11.653799295425415,
+      "finetuned_time": 11.824856758117676
+    },
+    {
+      "prompt": "I grapple the goblin",
+      "base_response": ", clasp its small hand in mine. We're close combat fighters. +4 size bonus for me. Roll: 1d20+8+-1 (BAB+STR). Bestiary or character sheet if needed. Answer: 9-1 (BAB+STR). DC 30 to grab. Success: 1d6+DEX mod damage. Failure: -2 sized penalty each round until healed. Rest 8 hours to become flat-footed again.",
+      "finetuned_response": ". Touch attack to grab. +4 size bonus for you. Roll: 1d20+7+-1 (BAB+STR). No damage on hit. -1 size penalty for you. Combat round. Roll: 1d20+6+-2 (BAB+STR). Damage on hit. Confirmed piercing damage. Fort DC 15 or die. Death! Morale check DC 20 or die. Roll: 1d20+8+-3 (BAB+DEX). No damage on death but take all other effects. Yes, dire consequences if shaken or frightened. Shake DC 15 or become panicked. Frightened DC 15 or flee. Roll: 1d20",
+      "base_time": 7.900521755218506,
+      "finetuned_time": 11.836961269378662
+    },
+    {
+      "prompt": "I attack the bandit with my mace",
+      "base_response": ". Attack: [1d20+4] = 5 vs AC 16. Miss! Damage: [1d8+2] = 7 bludgeoning. Correct hit! Damage: [1d8+2] = 9 bludgeoning. Fort save DC 15 or die. Save: [1d20+3] = 19. Survived! Now deal damage on hit. Check bestiary for damage options.",
+      "finetuned_response": ". Attack: [1d20+4] = 8 vs AC 15. Miss! Damage: [1d6+2] = 7 bludgeoning. Correct damage on hit! Bludgeoning damage: [1d8+3] = 9. Fort save DC 15 or die. Save: [1d20+5] = 12. Survived! Now deal nonlethal damage if possible. Check: [1d20+4] = 12 vs AC 15. Failed! Take nonlethal damage: [1d8+2] = 8. New total: 9. Fort save again: [1d20+",
+      "base_time": 8.07375431060791,
+      "finetuned_time": 11.948496103286743
+    },
+    {
+      "prompt": "I climb to wall",
+      "base_response": "mount. [Climb: [1d20+4] = 6 (STR), DC 25. Success: move 25ft on wall. Failure: try again next day. Roll: 1d20+9+3 (BAB+STR). Output: 17 (STR). Climb: [1d20+4] = 8 (STR), DC 25. Failed. You fall. Take falling damage. Check HP bar for death. Update: confirmed dead. Final blow: str=20, dex=10, critfied! Damage: [2d6+6x2] = 28 piercing. Fort save dc 15 or",
+      "finetuned_response": ": [1d20+6] = 7 vs DC 25. Failed. You fall short of target. Take falling damage: [1d8+4] = 9. Fort save: [1d20+3] = 13 vs DC 16. Failed! You're flat-footed now. Damage: [2d6+1] = 4 piercing. Flat-footed until end of move. No -2 for running. Save: [1d20+5] = 16 vs DC 22. Failed! You take damaging fall. HP: 12 → 4 (Fort + Blunt). Check: [1d20+6]",
+      "base_time": 11.872210502624512,
+      "finetuned_time": 11.81893539428711
+    },
+    {
+      "prompt": "I attack the guard with my staff while high ground",
+      "base_response": ". Staff damage: [1d4+2] = 5 vs AC 16. Miss! No damage. [Resisted!] Damage: [1d8+3] = 7 piercing. Confirmed hit! Fort DC 15 or die. Roll: 1d20+9+3 (staff attributes). Death! Resisted! [Absorbed!] Damage: [1d6+1d6+2] = 12 fire. Confirmed death! Damage to monster database. Update bestiary record. Yes, confirm final threat. Confirm: [1d20+9+3] = 21. Critical fumble! You drop your staff. Take falling damage:",
+      "finetuned_response": ". Staff: [1d20+4] = 5 vs AC 16. Miss! Damage: [1d8+2] = 3 piercing. Try again at -2 AC. No penalty for flat-footed. Roll damage on hit. Staff: [1d20+4] = 7 vs AC 16. Miss! Damage: [1d8+2] = 5 piercing. Flat-footed to roll damage. Confirm: [1d20+4] = 19 vs DC 15. Confirmed! Damage: [1d8+1d8+2] = 12 bludgeoning. +2 size bonus. Yes, confirmed!",
+      "base_time": 11.772372007369995,
+      "finetuned_time": 11.498094081878662
+    },
+    {
+      "prompt": "I attack the ogre",
+      "base_response": "with my battleaxe. Attack: [1d20+6] = 8 vs AC 14. Miss! Damage: [1d8+4] = 7 slashing. Update: Hit! Damage: [1d8+3] = 9 bludgeoning. Confirmed hit! Fort save DC 15 or die. Save: [1d20+6] = 10. Survived! Now at -2 STR/DEX for 1 round. Post-save check: [1d20+4] = 11. Not confirmed damage yet. Regular hit! Damage: [1d8+3] = 7 slashing. Check armor type to see if you get",
+      "finetuned_response": "with my warcry. Attack: [1d20+7] = 9 vs AC 14. Miss! Warcry: +3 to all attacks. New attack: [1d20+7] = 8 vs AC 14. Miss again! Check if stunned or shaken. No effect. Next action: [1d6+5] = 12. Regular hit! Damage: [1d8+3] = 6 bludgeoning. Check for special abilities. Yes, Cleave! (Cleave only if adjacent.) Confirm: [1d20+7] = 23. Confirmed! Bludgeoning damage: [1d8+1d8",
+      "base_time": 11.707689046859741,
+      "finetuned_time": 11.697174787521362
+    },
+    {
+      "prompt": "I attack the skeleton with my longbow",
+      "base_response": ". Attack: [1d20+5] = 8 vs AC 16. Miss! Damage: [1d8+3] = 4 piercing. Try again. Reroll hit dice and damage on failure. No flat-footedness required. Yes, sir! Roll 1d6 for hit dice and 1d4 for damage. Six HDs this time... check alignment. Target not shaken or frightened. New roll: [1d20+5] = 7 vs AC 16. Failed! You drop your bow. Take nonlethal damage. Drop items as you fall. Items: [1d4+1] = 3 arrows. Dropped. Out of combat",
+      "finetuned_response": ". Attack: [1d20+5] = 7 vs AC 16. Miss! Damage: [1d8+3] = 4 piercing. Try again. Check damage on hit. Confirm: [1d20+5] = 19 vs DC 16. Confirmed! Damage: [1d8+1d8+3] = 17 slashing. Final damage: [4+17] = 31 slashing. Skeleton pierced. Each piercing strike deals 1d8 damage to multiple segments of bone. Roll damage on each segment penetrated. Fort save for resistance/absorption. Yes, type 1 saving throw. No -1 for me. Save:",
+      "base_time": 11.681581974029541,
+      "finetuned_time": 11.80506157875061
+    },
+    {
+      "prompt": "Can I cast Animate Dead?",
+      "base_response": "Yes, you can cast Animate Dead (level 2 spell). It requires wizard level 5 or higher. Check your class features for options.",
+      "finetuned_response": "Yes, you can cast Animate Dead (level 3 spell). It requires wizard level 7 or higher. Check your class features for details.",
+      "base_time": 2.983208656311035,
+      "finetuned_time": 2.3495819568634033
+    },
+    {
+      "prompt": "I move silently to sneak past guard",
+      "base_response": "duty. Move Silently: [1d20+6] = 7, DC 30. Failed! You make noise moving. Enemies alerted. -2 on next attempt. Move Silently: [1d20+4] = 8, DC 15. Failed again! You fail the attempt. You alert guards with your movement. Enemies engaged. Damage: [1d8+2x2] = 9 piercing. Fort save [1d20+3] = 23 vs DC 15 or die. Survived! You move without a sound. Next try: [1d20+6] = 12, DC 10. Success! You move",
+      "finetuned_response": "1. Move Silently: [1d20+6] = 7, DC 30. Failed. You make noise. Enemies alerted. Movement打断。需要重新规划路径。重试：[1d20+8] = 9 vs DC 15. 失败！你发出声音。敌人发现你。战斗开始。伤害：[1d4+2x2] = 9 piercing。减少移动速度。新移动速度：[1d20+6] = 22 (DEX + Speed). 每次行动只能向一个方向移动，不能突然改变方向。例如，如果你以每回合10尺的正常移动速度前进，那么你在",
+      "base_time": 11.86972427368164,
+      "finetuned_time": 11.809266328811646
+    },
+    {
+      "prompt": "I ride to guide mount",
+      "base_response": ": [1d20+8] = 9. Ride: [1d20+] = 7-2 (DEX), DC 30. Success! You move without fail. Duration: 1 hour/level or until failed. Roll: 1d20+6+-1 (DEX). Minimum 1 mile per round unless longer allowed. Repeat as needed. Time taken: 1 hour/day + travel time. Limit 5 days total riding. Check character sheet for details. Example: 4 hours ridden (2 days + 2 rounds). No HP recovery during rides. Needs restoration when not active. Consult table of common mounts and abilities....",
+      "finetuned_response": ": [1d20+4] = 6 vs DC 15. Failed. You fail the attempt. You fall or fail move action. Rest 1 hour to try again. No skills checks while riding. Roll: 1d20+8+-2 (DEX). Minimum 1 movement action per round unlessMounted Combat Bonus. One feat if bard level 9. Yes, prestige feat requires bard level 7. Check bestiary for variants. XP penalty if failed skill check. -2 on ability checks while mounted. Use combat style bonuses if available....",
+      "base_time": 10.893792390823364,
+      "finetuned_time": 8.746870279312134
+    },
+    {
+      "prompt": "I use Knowledge",
+      "base_response": "Checklists: [1d20+9] = 24, DC 30. Failed. You fail the attempt. Report failure to DM. 1 hour downtime. -2 on retry. Yes, another try! [1d20+9] = 28, DC 15. Success! (Exactly made it) Rest one day fully restored. No HP recovered without healing. Dying! Stabilization: [1d20+-1] = 6 vs DC 10. Failed! Now at −7 HP. Death! Save now: [1d20+9] = 26 vs DC 10. Survived! Join combat again. Regular character rest",
+      "finetuned_response": "& Memory as a base rule set. Add Rage (or similar) for 1/day per level. Use bestiary if needed. Roll: 1d20+6+-3 (BAB+STR). -3 size penalty for you. Bestiary entry: [1d20+] = 8-1, DC 15 or die. Success: +4 to STR/DEX saves and skills. Failure: -2 to both. Repeat as necessary. Duration: Round 2 only. See details in book. Name: Drizzled Expert Title: Rogue Level: 7 AB: DRIZLED (-2 Str/Dex), Incapacitated 2 rounds. Spell: Invisibility Range: Close Duration",
+      "base_time": 11.596004486083984,
+      "finetuned_time": 11.75377607345581
+    },
+    {
+      "prompt": "I attack the orc with my staff",
+      "base_response": ". [attack] = [1d20+3] = 6 vs AC. Apply damage on hit. Update: [damage] = [4d8] = 7 fire. Staff has sorcery level 5. Spell slot used (level 1→0). No spell remaining. Sorry, you drop your staff. Damage: [drop] = 4 bludgeoning. Items dropped. Check inventory for loss. Update: [inventory] = 3→2 due to item drop. Drop confirmed. Check character sheet. Item lost! Remove from inventory. Inventory now: [1d20+9] = 11 items. Confirm loss: [yes/no] = yes. Loss confirmed. Character takes",
+      "finetuned_response": ". [attack] = [1d20+5] = 7 vs AC. Apply damage on hit. Update: [damage] = [1d4+1] = 3 piercing. Staff check DC 16 or break. Break! Damage: [2d8] = 9 bludgeoning. Reload needed. [reload] = [1d20+] = 2-2 (hit). [damage] = [1d6+3] = 7 piercing. No HP recovered without healing. Check for enchantment (compulsion) effects. Yes, a confusing spell. You cannot shake off this confusion. Confusion ends after 5 rounds. Rest 1 hour to become fatigued",
+      "base_time": 11.712484359741211,
+      "finetuned_time": 11.619523763656616
+    },
+    {
+      "prompt": "I bluff guard",
+      "base_response": ". Bluff: [1d20+3] = 6 (CHA), DC 25. Failed. You fail the attempt. No penalty for failed bluffs. Continue trying. Failure further dazes you. One round duration. -4 to all skills unless skill is fumble. Fumbles occur at will, nonlethal damage otherwise. Each failure makes you more vulnerable.... Duration: 1 minute/level or until resolved. Consult monster manual. Roll 1d8 for vulnerability increases. Minimum +1 each time. Possible max +7. Worst case scenario: +7 vulnerability. Fort save DC 15 or die. Save: [1d20+3] = 9. Survived! Now",
+      "finetuned_response": ": [1d20+5] = 6 vs DC 23. Failed. You fail the attempt. Bluff: [1d20+8] = 9 (CHA), DC 15. Failed. You fail the attempt. Bluff: [1d20+4] = 7 (CHA). Success! You convincingly pretend to be a skilled fighter. No damage taken. Duration: 1 minute/level or until dispelled. Spells per day: Cantrips: 9, Level 1: 4, Level 2: 3, Level 3: 2, Level 4: 1, Level 5: 1, Level 6:",
+      "base_time": 11.700366258621216,
+      "finetuned_time": 11.769631624221802
+    },
+    {
+      "prompt": "I climb the wall",
+      "base_response": ". [Climb: [1d20+4]] = 7 vs DC 25. Failed. You fall. Take falling damage. Check HP bar for death. Update character sheet. Repeat if failed. No flat-footed, no running allowed after fall. -3 AC until healed. One attempt only per round. Roll: 1d20+6+-1 (BAB+STR). Minimum 1 HD damaged. Multiple falls? Add to current total. Fort save: [1d20+8] = 9 vs DC 20. Failed! You're pushed back against the wall. Climb: [1d20+4] = 12 vs DC 25.",
+      "finetuned_response": ". [Climb: [1d20+4]] = 5 vs DC 25. Failed. You fall. Take falling damage. Check HP/Death. Update character sheet. New column for health/damage. Yes, three times! Fort save [1d20+3] = 7 vs DC 16. Died! Roll death saving throw or accept fate. SR: [1-CON] = -1 (weak). Fail! You die. Death saves: [1d20+] = 8-1 (hit) + [1d20-1] = 9 (-1 weak) + [-1] = -2 (old age). FAIL! Now 10",
+      "base_time": 11.689708232879639,
+      "finetuned_time": 11.72074580192566
+    },
+    {
+      "prompt": "Make a Wisdom check",
+      "base_response": ": [1d20+8] = 9 vs DC 15. Failed! You fail the attempt. Try again next day. No penalty for failed daily limit. Roll again tomorrow if needed. Yes, take another try. Failure not cumulative unless desperate. New bestiary requires skill checks to avoid danger. Check missed creature's initiative. -3 size penalty for you. Ready action. Attack: [1d20+6] = 7 vs AC 14. Miss! Target runs away. Next turn: [1d20+4] = 13. Crit confirmed! Damage: [2d8+6] = 15. Fort save DC 15 or die. Save",
+      "finetuned_response": ": [1d20+4] = 8 vs DC 25. Failed! You fail the attempt. Take falling damage. Fort save DC 15 or die. Save: [1d20+6] = 7. Survived! (Exactly made it) Damage: [1d8+3] = 9 fall. Fort save again DC 15 or die. Saved! Final damage: [1d8+3] = 5 total. Treat as grapple if you dare. Roll: 1d20+8+-2 (BAB+STR). Grappled! -2 size penalty for you. Roll: 1d20+5+2 (BAB+",
+      "base_time": 11.65315866470337,
+      "finetuned_time": 11.646132707595825
+    },
+    {
+      "prompt": "What does Shatter do?",
+      "base_response": "Shatter: Transmutation level Bard 1. One object shattered....easily done....no damage...just break up...see details in spellbook....Shards dealt as falling debris....Fort DC25 or take 1d6/level bludgeoning damage....repeat as necessary..",
+      "finetuned_response": "Explains damage vs AC. Range: Close (25 ft. + 5 ft./level). Forces the target to make a saving throw or suffer ... [Read more]",
+      "base_time": 4.425768136978149,
+      "finetuned_time": 3.3038713932037354
+    },
+    {
+      "prompt": "I attack the orc with my axe while high ground",
+      "base_response": ".attack: [1d20+3] = 8 vs AC. Apply damage on hit. Roll damage on strike: [1d6+4] = 5 bludgeoning. Update position on map. Note: attack confirmed! Damage to HP: [1d8+2x1] = 7 slashing. Check for critical f... No dice rolled for CR. Confirm: [1d20+3] = 9 vs DC 15. Miss! You drop your weapon. Handle dropped item: [1d20+] = 8-1 (DEX), DC 20. Success: add to inventory. Failure: try again next day. Repeat: [1d20+",
+      "finetuned_response": ".attack: [1d20+9] = 24 vs AC. Apply damage on hit. Update position. Check: [1d20+8] = 17 vs DC 16. Success! You gain advantage in attack and damage rolls due to high ground. Apply damage on hit. Update position. Confirm: [1d20+5] = 23 vs DC 16. Confirmed! Increase AC of terrain. Roll damage on hit. Damage: [1d8+3] = 5 slashing. Fort save: [1d20+4] = 20 vs DC 12. No damage. Position updated. Report: [1d20",
+      "base_time": 11.255953073501587,
+      "finetuned_time": 11.45246148109436
+    },
+    {
+      "prompt": "How many skill points do I get?",
+      "base_response": "You gain 2 skill points (4 base + -2 INT). Minimum 1 per level. Uses remaining: 5.",
+      "finetuned_response": "You gain 20 skill points (4 base + +1 each INT). Minimum 1 per level. Bestiary bonus: +3 INT for Cha-based skills. Check bestiary entry.",
+      "base_time": 2.581082344055176,
+      "finetuned_time": 3.108278274536133
+    }
+  ]
+}
