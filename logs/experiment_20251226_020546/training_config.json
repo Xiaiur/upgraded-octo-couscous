@@ -1,0 +1,20 @@
+{
+  "model_name": "Qwen/Qwen2.5-1.5B",
+  "data_path": "/content/LLM_LoRA_training/dnd_dataset_25.jsonl",
+  "use_lora": true,
+  "lora_r": 8,
+  "lora_alpha": 16,
+  "lora_dropout": 0.1,
+  "learning_rate": 0.0001,
+  "batch_size": 1,
+  "num_epochs": 3,
+  "max_length": 384,
+  "seed": 42,
+  "test_size": 0.1,
+  "eval_steps": 30,
+  "gradient_accumulation_steps": 8,
+  "warmup_steps": 100,
+  "optimizer": "adamw_torch",
+  "lr_scheduler_type": "cosine",
+  "max_grad_norm": 1.0
+}
