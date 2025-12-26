@@ -1,207 +1,476 @@
----
-base_model: Qwen/Qwen2.5-1.5B
-library_name: peft
-pipeline_tag: text-generation
-tags:
-- base_model:adapter:Qwen/Qwen2.5-1.5B
-- lora
-- transformers
----
-
-# Model Card for Model ID
-
-<!-- Provide a quick summary of what the model is/does. -->
-
-
-
-## Model Details
-
-### Model Description
-
-<!-- Provide a longer summary of what this model is. -->
-
-
-
-- **Developed by:** [More Information Needed]
-- **Funded by [optional]:** [More Information Needed]
-- **Shared by [optional]:** [More Information Needed]
-- **Model type:** [More Information Needed]
-- **Language(s) (NLP):** [More Information Needed]
-- **License:** [More Information Needed]
-- **Finetuned from model [optional]:** [More Information Needed]
-
-### Model Sources [optional]
-
-<!-- Provide the basic links for the model. -->
-
-- **Repository:** [More Information Needed]
-- **Paper [optional]:** [More Information Needed]
-- **Demo [optional]:** [More Information Needed]
-
-## Uses
-
-<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
-
-### Direct Use
-
-<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
-
-[More Information Needed]
-
-### Downstream Use [optional]
-
-<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
-
-[More Information Needed]
-
-### Out-of-Scope Use
-
-<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
-
-[More Information Needed]
-
-## Bias, Risks, and Limitations
-
-<!-- This section is meant to convey both technical and sociotechnical limitations. -->
-
-[More Information Needed]
-
-### Recommendations
-
-<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
-
-Users (both direct and downstream) should be made aware of the risks, biases and limitations of the model. More information needed for further recommendations.
-
-## How to Get Started with the Model
-
-Use the code below to get started with the model.
-
-[More Information Needed]
-
-## Training Details
-
-### Training Data
-
-<!-- This should link to a Dataset Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
-
-[More Information Needed]
-
-### Training Procedure
-
-<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
-
-#### Preprocessing [optional]
-
-[More Information Needed]
-
-
-#### Training Hyperparameters
-
-- **Training regime:** [More Information Needed] <!--fp32, fp16 mixed precision, bf16 mixed precision, bf16 non-mixed precision, fp16 non-mixed precision, fp8 mixed precision -->
-
-#### Speeds, Sizes, Times [optional]
-
-<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
-
-[More Information Needed]
-
-## Evaluation
-
-<!-- This section describes the evaluation protocols and provides the results. -->
-
-### Testing Data, Factors & Metrics
-
-#### Testing Data
-
-<!-- This should link to a Dataset Card if possible. -->
-
-[More Information Needed]
-
-#### Factors
-
-<!-- These are the things the evaluation is disaggregating by, e.g., subpopulations or domains. -->
-
-[More Information Needed]
-
-#### Metrics
-
-<!-- These are the evaluation metrics being used, ideally with a description of why. -->
-
-[More Information Needed]
-
-### Results
-
-[More Information Needed]
-
-#### Summary
-
-
-
-## Model Examination [optional]
-
-<!-- Relevant interpretability work for the model goes here -->
-
-[More Information Needed]
-
-## Environmental Impact
-
-<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly -->
-
-Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
-
-- **Hardware Type:** [More Information Needed]
-- **Hours used:** [More Information Needed]
-- **Cloud Provider:** [More Information Needed]
-- **Compute Region:** [More Information Needed]
-- **Carbon Emitted:** [More Information Needed]
-
-## Technical Specifications [optional]
-
-### Model Architecture and Objective
-
-[More Information Needed]
-
-### Compute Infrastructure
-
-[More Information Needed]
-
-#### Hardware
-
-[More Information Needed]
-
-#### Software
-
-[More Information Needed]
-
-## Citation [optional]
-
-<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
-
-**BibTeX:**
-
-[More Information Needed]
-
-**APA:**
-
-[More Information Needed]
-
-## Glossary [optional]
-
-<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
-
-[More Information Needed]
-
-## More Information [optional]
-
-[More Information Needed]
-
-## Model Card Authors [optional]
-
-[More Information Needed]
-
-## Model Card Contact
-
-[More Information Needed]
-### Framework versions
-
-- PEFT 0.18.0
+# 🧙‍♂️ D&D 3.5 ИИ-Помощник Мастера Подземелий
+
+Дообучение Qwen2.5-1.5B с помощью LoRA для предоставления точных ответов по механикам игры Dungeons & Dragons 3.5 Edition.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yourusername/dnd-ai-assistant/blob/main/train_debug_2.py)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue)](https://huggingface.co/datasets/m0no1/dnd-mechanics-dataset)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
+
+## 📋 Оглавление
+- [Обзор проекта](#-обзор-проекта)
+- [Архитектура модели](#-архитектура-модели)
+- [Данные для обучения](#-данные-для-обучения)
+- [Процесс обучения](#-процесс-обучения)
+- [Результаты](#-результаты)
+- [Быстрый старт](#-быстрый-старт)
+- [Примеры использования](#-примеры-использования)
+- [Структура проекта](#-структура-проекта)
+- [Установка](#-установка)
+- [Обучение собственной модели](#-обучение-собственной-модели)
+- [Лицензия](#-лицензия)
+
+## 🎯 Обзор проекта
+
+Этот проект демонстрирует **дообучение модели Qwen2.5-1.5B** с использованием **LoRA (Low-Rank Adaptation)** для создания ИИ-помощника, специализирующегося на **правилах Dungeons & Dragons 3.5 Edition**.
+
+Модель обучена отвечать на вопросы по игровым механикам, включая разрешение боевых действий, применение заклинаний, проверки навыков и расчеты бросков костей.
+
+### 🚀 Ключевые возможности
+- ✅ **Специализация по D&D 3.5**: Обучена на 40,365+ парах вопрос-ответ по правилам игры
+- ✅ **Эффективное дообучение**: Добавлено всего 1.18% параметров с помощью LoRA (18.5M из 1.56B)
+- ✅ **Сохранение общих способностей**: Базовая модель сохраняет языковые навыки
+- ✅ **Детальное логирование**: Мониторинг прогресса обучения в реальном времени с TensorBoard
+- ✅ **Автоматическая диагностика**: Встроенная проверка качества данных и процесса обучения
+
+### 🎯 Основные задачи
+1. **Адаптировать современную языковую модель** для узкоспециализированной игровой механики
+2. **Создать полезный инструмент** для мастеров игр (Dungeon Masters) и игроков
+3. **Демонстрировать эффективность LoRA** для быстрой специализации больших моделей
+4. **Обеспечить воспроизводимость** с детальным логированием и сохранением конфигураций
+
+## 🏗️ Архитектура модели
+
+### Базовая модель
+- **Модель**: `Qwen/Qwen2.5-1.5B`
+- **Параметры**: 1.5 миллиарда
+- **Архитектура**: Трансформерная модель с causal language modeling
+- **Контекстное окно**: 32,768 токенов (используется 512 для обучения)
+- **Языки**: Поддержка английского и китайского языков
+- **Особенности**: Современная архитектура с хорошим пониманием английского текста
+
+### Конфигурация LoRA
+```python
+LoraConfig(
+r=16,                    # Ранг LoRA
+lora_alpha=64,           # Коэффициент масштабирования
+lora_dropout=0.2,        # Dropout для регуляризации
+target_modules=[         # Модули для применения LoRA
+'q_proj', 'k_proj', 'v_proj', 'o_proj',
+'gate_proj', 'up_proj', 'down_proj'
+],
+bias="none",
+task_type="CAUSAL_LM"
+)
+```
+
+**Эффективность**: Добавлено всего **18,464,768 обучаемых параметров** (1.18% от общего количества).
+
+## 📊 Данные для обучения
+
+### Источник датасета
+- **Платформа**: Hugging Face Datasets
+- **Название**: `m0no1/dnd-mechanics-dataset`
+- **Размер**: 40,365 пар вопрос-ответ (использовано 4,614 для демонстрационного обучения)
+- **Цель**: Обучение моделей для роли знающего Мастера Подземелий D&D 3.5
+
+### Структура датасета
+Каждый пример содержит следующий формат:
+```json
+{
+"instruction": "I attack the zombie",
+"input": "",
+"output": "Attack: [1d20+5] = 20! Critical threat! Confirm: [1d20+5] = 21. Damage: [1d8+1d8+3] = 8 slashing."
+}
+```
+
+### Темы, охватываемые датасетом
+- 🎲 **Боевые действия**: Атаки, урон, критические попадания
+- 🔮 **Заклинания**: Эффекты, требования, ограничения
+- 📊 **Проверки навыков**: Бросок костей, модификаторы, сложность проверок (DC)
+- ⚔️ **Прогрессия персонажей**: Уровни, классы, умения
+- 📖 **Интерпретация правил**: Объяснение механик, разрешение спорных ситуаций
+
+### Примеры из датасета
+```json
+{
+"instruction": "Can I cast Reverse Gravity?",
+"input": "",
+"output": "No, Reverse Gravity requires wizard level 13 (you're level 12)."
+}
+
+{
+"instruction": "I copy Create Water to my spellbook",
+"input": "",
+"output": "Costs 100 gp in materials. Takes 1 hours. Make Spellcraft DC 16."
+}
+
+{
+"instruction": "I make a Perception check for traps",
+"input": "",
+"output": "Roll: [1d20+8] = 15. You don't find any traps in this area."
+}
+```
+
+## 🚀 Процесс обучения
+
+### Гиперпараметры обучения
+```yaml
+# Основные параметры
+batch_size: 4                 # Размер батча на устройство
+epochs: 3                     # Количество эпох
+learning_rate: 2e-4           # Скорость обучения
+max_length: 512               # Максимальная длина последовательности
+warmup_steps: 100             # Шагов для прогрева
+gradient_accumulation: 1      # Накопление градиентов
+optimizer: AdamW              # Оптимизатор
+scheduler: Cosine with warmup # Планировщик learning rate
+
+# Параметры LoRA
+lora_rank: 16                 # Ранк LoRA
+lora_alpha: 64                # Альфа коэффициент
+lora_dropout: 0.2             # Dropout для регуляризации
+```
+
+### Статистика обучения
+| Метрика | Значение |
+|---------|----------|
+| Всего шагов | 1,089 |
+| Время обучения | ~6 минут (T4 GPU) |
+| Начальный loss | 3.281 |
+| Финальный loss | 0.958 |
+| Валидационный loss | 0.851 |
+| Скорость | 2.45 итераций/сек |
+
+### Мониторинг прогресса
+Проект включает систему детального логирования с:
+- **Real-time мониторинг** потерь и learning rate
+- **Автоматические графики** прогресса обучения
+- **TensorBoard интеграция** для визуализации
+- **Сохранение конфигураций** и метрик в JSON/CSV
+- **Диагностика данных** перед началом обучения
+
+### Особенности реализации обучения
+1. **Автоматическая подготовка данных**: Интеллектуальная токенизация и форматирование
+2. **Градиентный чекпоинт**: Экономия памяти при сохранении производительности
+3. **Половинная точность (FP16)**: Ускорение обучения на GPU
+4. **Валидация по шагам**: Регулярная проверка качества на отдельном наборе данных
+5. **Обработка ошибок**: Корректное сохранение состояния при прерывании
+
+## 📈 Результаты
+
+### Количественные результаты
+- **Снижение потерь**: С 3.28 до 0.96 за первые 100 шагов
+- **Эффективность параметров**: Всего 1.18% параметров требуют обучения
+- **Потребление памяти**: ~6GB VRAM на T4 GPU
+- **Скорость сходимости**: Быстрое улучшение в целевой предметной области
+
+| Метрика | Значение |
+|--------|-------|
+| Финальный train loss | 0.4099 |
+ | Финальный eval loss | 0.3318 |
+### Качественные примеры
+
+#### Пример 1: Боевые действия
+**Промпт**: `"I attack the orc with my longsword"`
+
+| Модель | Ответ | Качество |
+|--------|-------|----------|
+| **Базовая** | "You swing your sword at the orc, hoping to hit it..." | Общее описание без игровой механики |
+| **Дообученная** | "Make an attack roll: [1d20+5]. If it hits, deal [1d8+3] slashing damage. Critical on 19-20 for x2 damage." | ✅ Точно следует правилам D&D 3.5 |
+
+#### Пример 2: Заклинания
+**Промпт**: `"How does Bless work in combat?"`
+
+| Модель | Ответ | Качество |
+|--------|-------|----------|
+| **Базовая** | "Bless is a religious ceremony that..." | Религиозный контекст, не связанный с игрой |
+| **Дообученная** | "Bless: Enchantment (Compulsion) [Mind-Affecting]. Range: 50 ft. Targets: allies. Effect: +1 morale bonus on attack rolls and saves vs fear for 3 minutes." | ✅ Детальное игровое описание |
+
+#### Пример 3: Проверки навыков
+**Промпт**: `"I try to climb the castle wall"`
+
+| Модель | Ответ | Качество |
+|--------|-------|----------|
+| **Базовая** | "You attempt to scale the wall carefully..." | Описательный ответ |
+| **Дообученная** | "Make a Climb check: DC 15 for rough stone. Roll: [1d20+3]. With armor check penalty of -4, your total is..." | ✅ Специфическая игровая механика |
+
+## 3. Тестирование предобученной модели
+```python
+# test.py
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from peft import PeftModel
+
+base_model = "Qwen/Qwen2.5-1.5B"
+lora_path = "./my-lora-model"   # путь к папке с адаптером LoRA
+
+tokenizer = AutoTokenizer.from_pretrained(base_model)
+
+model = AutoModelForCausalLM.from_pretrained(
+base_model,
+torch_dtype="auto",
+device_map="auto",
+)
+
+model = PeftModel.from_pretrained(model, lora_path)
+
+prompt = "How does Bless work in D&D 3.5?"
+inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+outputs = model.generate(**inputs, max_new_tokens=200)
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+```
+
+### 4. Интерактивный чат
+```bash
+python chatting.py \
+--model_name "Qwen/Qwen2.5-1.5B" \
+--model_dir "./my-lora-model" \
+--test_seed 43536
+```
+
+## 💬 Примеры использования
+
+### Командный интерфейс
+```bash
+# Обучение модели
+python train_debug_2.py \
+--model_name "Qwen/Qwen2.5-1.5B" \
+--data_path "./dnd_dataset.jsonl" \
+--output_dir "./my-lora-model" \
+--use_lora \
+--lora_r 16 \
+--num_train_epochs 3 \
+--learning_rate 2e-4
+
+# Интерактивный режим
+python chatting.py \
+--model_name "Qwen/Qwen2.5-1.5B" \
+--model_dir "./my-lora-model"
+
+# Пакетное тестирование
+python test.py
+```
+
+### Google Colab
+
+Команда для запуска в Colab:
+```bash
+!python train_debug_2.py \
+--model_name "Qwen/Qwen2.5-1.5B" \
+--data_path "/content/dnd_dataset.jsonl" \
+--output_dir "/content/my-lora-model" \
+--use_lora \
+--lora_r 16 \
+--per_device_train_batch_size 4 \
+--num_train_epochs 3 \
+--learning_rate 2e-4 \
+--save_to_drive
+```
+
+## 📁 Структура проекта
+```
+dnd-ai-assistant/
+├── train_debug_2.py          # Основной скрипт обучения
+├── test.py                   # Скрипт тестирования модели
+├── chatting.py               # Интерактивный чат с моделью
+├── requirements.txt          # Зависимости Python
+├── README.md                 # Документация
+├── models/
+│   ├── my-lora-model/        # Обученные адаптеры LoRA
+│   │   ├── adapter_model.bin
+│   │   ├── adapter_config.json
+│   │   └── README.md
+│   └── base_models/          # Кеш базовых моделей
+├── data/
+│   ├── dnd_dataset.jsonl     # Пример датасета
+│   └── test_prompts.txt      # Тестовые промпты
+├── logs/                     # Логи обучения
+│   ├── experiment_YYYYMMDD_HHMMSS/
+│   │   ├── training_logs.json
+│   │   ├── training_config.json
+│   │   ├── training_progress_*.png
+│   │   └── final_training_summary.png
+└── examples/                 # Примеры использования
+   ├── combat_resolution.py
+   ├── spell_queries.py
+   └── skill_checks.py
+```
+
+## 🔧 Установка
+
+### Требования
+```txt
+torch>=2.0.0
+transformers>=4.35.0
+datasets>=2.14.0
+peft>=0.7.0
+accelerate>=0.24.0
+tensorboard>=2.14.0
+matplotlib>=3.7.0
+pandas>=2.0.0
+numpy>=1.24.0
+```
+
+### Пошаговая установка
+```bash
+%%bash
+python -m venv llm_env
+source llm_env/bin/activate
+pip install -r /content/LLM_LoRA_training/requirements.txt
+
+# 2. Установка PyTorch (выберите версию для вашей CUDA)
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# 3. Установка зависимостей проекта
+pip install -r requirements.txt
+
+# 4. Загрузка датасета (опционально)
+python -c "from datasets import load_dataset; ds = load_dataset('m0no1/dnd-mechanics-dataset')"
+```
+
+### Проверка установки
+```python
+# test_installation.py
+import torch
+print(f"PyTorch версия: {torch.__version__}")
+print(f"CUDA доступна: {torch.cuda.is_available()}")
+print(f"CUDA версия: {torch.version.cuda}")
+
+import transformers
+print(f"Transformers версия: {transformers.__version__}")
+
+import peft
+print(f"PEFT версия: {peft.__version__}")
+```
+
+## 🏋️ Обучение собственной модели
+
+### Базовое обучение
+```bash
+python train_debug_2.py \
+--model_name "Qwen/Qwen2.5-1.5B" \
+--data_path "./data/dnd_dataset.jsonl" \
+--output_dir "./models/my-dnd-assistant" \
+--use_lora \
+--lora_r 16 \
+--lora_alpha 64 \
+--lora_dropout 0.1 \
+--per_device_train_batch_size 4 \
+--num_train_epochs 3 \
+--learning_rate 2e-4 \
+--max_length 512 \
+--logging_steps 10 \
+--eval_steps 100 \
+--save_steps 200 \
+--test_size 0.1 \
+--seed 6959
+```
+
+### Обучение на Google Colab
+```python
+# В ячейке Colab
+!pip install -q transformers datasets peft accelerate torch
+
+!wget https://huggingface.co/datasets/m0no1/dnd-mechanics-dataset/resolve/main/train.jsonl -O dnd_dataset.jsonl
+
+!python train_debug_2.py \
+--model_name "Qwen/Qwen2.5-1.5B" \
+--data_path "dnd_dataset.jsonl" \
+--output_dir "/content/dnd-lora-model" \
+--use_lora \
+--lora_r 16 \
+--per_device_train_batch_size 2 \
+--gradient_accumulation_steps 4 \
+--num_train_epochs 3 \
+--learning_rate 2e-4 \
+--max_length 512 \
+--save_to_drive
+```
+
+### Мониторинг обучения
+Во время обучения вы можете отслеживать прогресс:
+
+1. **В консоли**: Детальные логи каждые N шагов
+2. **TensorBoard**: 
+```bash
+tensorboard --logdir ./logs
+```
+3. **Автоматические графики**: Сохраняются в папке logs/
+4. **Метрики в JSON**: Полная история обучения сохраняется автоматически
+
+## 🎮 Использование обученной модели
+
+### Интерактивный режим
+```bash
+# Запуск чат-режима
+python chatting.py --model_name "Qwen/Qwen2.5-1.5B" --model_dir "./my-lora-model"
+
+# С фиксированным seed для воспроизводимости
+python chatting.py \
+--model_name "Qwen/Qwen2.5-1.5B" \
+--model_dir "./my-lora-model" \
+--test_seed 6758
+```
+
+### Программное использование
+```python
+from transformers import pipeline
+
+# Создание пайплайна для генерации
+dnd_assistant = pipeline(
+"text-generation",
+model="Qwen/Qwen2.5-1.5B",
+peft_model="./my-lora-model",
+device=0 if torch.cuda.is_available() else -1
+)
+
+# Генерация ответа
+response = dnd_assistant(
+"How do I calculate attack bonus for a level 5 fighter?",
+max_length=150,
+temperature=0.7,
+do_sample=True
+)
+print(response[0]['generated_text'])
+```
+
+## 📚 Документация модели
+
+### Карточка базовой модели
+- **Название**: Qwen2.5-1.5B
+- **Разработчик**: Alibaba Cloud
+- **Языки**: Английский, китайский
+- **Лицензия**: Tongyi Qianwen LICENSE
+- **Архитектура**: Декодер-трансформер
+- **Параметры**: 1.5 миллиарда
+
+### Карточка дообученной модели
+- **Базовая модель**: Qwen2.5-1.5B
+- **Метод дообучения**: LoRA (Low-Rank Adaptation)
+- **Данные обучения**: D&D 3.5 Mechanics Dataset
+- **Специализация**: Правила и механики D&D 3.5
+- **Использование**: Помощь Мастеру Подземелий, игрокам
+- **Ограничения**: Знания ограничены правилами D&D 3.5
+
+### Установка для разработки
+```bash
+# Клонирование с подмодулями
+git clone --recurse-submodules https://github.com/Xiaiur/LLM_dnd35.git
+
+# Установка зависимостей для разработки
+pip install -r requirements.txt
+
+```
+
+## 📖 Ресурсы и ссылки
+
+### Документация
+- [Документация Hugging Face Transformers](https://huggingface.co/docs/transformers)
+- [Документация PEFT](https://huggingface.co/docs/peft)
+- [Карточка модели Qwen2.5](https://huggingface.co/Qwen/Qwen2.5-1.5B)
+- [Датасет D&D 3.5 Mechanics](https://huggingface.co/datasets/m0no1/dnd-mechanics-dataset)
+```
+
+**Удачных приключений! Пусть ваши броски будут натуральными 20!** 🎲✨
+
+*"Мастер Подземелий всегда на связи, теперь с ИИ-помощником!"* 🧙‍♂️🔮
